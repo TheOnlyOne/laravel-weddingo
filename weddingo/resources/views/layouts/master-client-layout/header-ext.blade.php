@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="icon" type="image/png" sizes="16x16" href="{{ URL::asset('plugins/images/favicon.png') }}">
     <title>Weddingo - @yield('title')</title>
     <!-- Bootstrap Core CSS -->
@@ -40,7 +41,7 @@
                 <li><a href="javascript:void(0)" class="open-close hidden-xs waves-effect waves-light"><i class="icon-arrow-right-circle ti-menu"></i></a></li>
                 <li>
                     <form role="search" class="app-search hidden-xs">
-                        <input type="text" placeholder="Search..." class="form-control">
+                        <input type="text" placeholder="חפש במערכת..." class="form-control">
                         <a href=""><i class="fa fa-search"></i></a>
                     </form>
                 </li>
@@ -126,102 +127,18 @@
                     <!-- /.dropdown-tasks -->
                 </li>
                 <!-- /.dropdown -->
-                <li class="dropdown"> <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#"> <img src="{{ URL::asset('plugins/images/users/varun.jpg') }}" alt="user-img" width="36" class="img-circle"><b class="hidden-xs">Steave</b> </a>
+                <li class="dropdown"> <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#"> <img src="{{ URL::asset('plugins/images/users/varun.jpg') }}" alt="user-img" width="36" class="img-circle"><b class="hidden-xs">ברוך הבא, זוהר</b> </a>
                     <ul class="dropdown-menu dropdown-user animated flipInY">
-                        <li><a href="#"><i class="ti-user"></i> My Profile</a></li>
-                        <li><a href="#"><i class="ti-wallet"></i> My Balance</a></li>
-                        <li><a href="#"><i class="ti-email"></i> Inbox</a></li>
+                        <li><a href="#"><i class="ti-user"></i> הפרופיל שלי</a></li>
+                        <li><a href="#"><i class="ti-wallet"></i> המאזן שלי</a></li>
+                        <li><a href="#"><i class="ti-email"></i> הודעות</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="#"><i class="ti-settings"></i> Account Setting</a></li>
+                        <li><a href="#"><i class="ti-settings"></i> הגדרות חשבון</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="#"><i class="fa fa-power-off"></i> Logout</a></li>
+                        <li><a href="#"><i class="fa fa-power-off"></i> התנתק</a></li>
                     </ul>
                     <!-- /.dropdown-user -->
                 </li>
-                <!-- .Megamenu -->
-                <li class="mega-dropdown">
-                    <a class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#"><span class="hidden-xs">Mega</span> <i class="icon-options-vertical"></i></a>
-                    <ul class="dropdown-menu mega-dropdown-menu animated bounceInDown">
-                        <li class="col-sm-3">
-                            <ul>
-                                <li class="dropdown-header">Forms Elements</li>
-                                <li><a href="form-basic.html">Basic Forms</a></li>
-                                <li><a href="form-layout.html">Form Layout</a></li>
-                                <li><a href="form-advanced.html">Form Addons</a></li>
-                                <li><a href="form-material-elements.html">Form Material</a></li> <li><a href="form-float-input.html">Form Float Input</a></li>
-                                <li><a href="form-upload.html">File Upload</a></li>
-                                <li><a href="form-mask.html">Form Mask</a></li>
-                                <li><a href="form-img-cropper.html">Image Cropping</a></li>
-                                <li><a href="form-validation.html">Form Validation</a></li>
-                            </ul>
-                        </li>
-                        <li class="col-sm-3">
-                            <ul>
-                                <li class="dropdown-header">Advance Forms</li>
-                                <li><a href="form-dropzone.html">File Dropzone</a></li>
-                                <li><a href="form-pickers.html">Form-pickers</a></li>
-                                <li><a href="form-wizard.html">Form-wizards</a></li>
-                                <li><a href="form-typehead.html">Typehead</a></li>
-                                <li><a href="form-xeditable.html">X-editable</a></li>
-                                <li><a href="form-summernote.html">Summernote</a></li>
-                                <li><a href="form-bootstrap-wysihtml5.html">Bootstrap wysihtml5</a></li>
-                                <li><a href="form-tinymce-wysihtml5.html">Tinymce wysihtml5</a></li>
-                            </ul>
-                        </li>
-                        <li class="col-sm-3">
-                            <ul>
-                                <li class="dropdown-header">Table Example</li>
-                                <li><a href="basic-table.html">Basic Tables</a></li> <li><a href="table-layouts.html">Table Layouts</a></li>
-                                <li><a href="data-table.html">Data Table</a></li>
-                                <li><a href="bootstrap-tables.html">Bootstrap Tables</a></li>
-                                <li><a href="responsive-tables.html">Responsive Tables</a></li>
-                                <li><a href="editable-tables.html">Editable Tables</a></li>
-                                <li><a href="foo-tables.html">FooTables</a></li>
-                                <li><a href="jsgrid.html">JsGrid Tables</a></li>
-                            </ul>
-                        </li>
-                        <li class="col-sm-3">
-                            <ul>
-                                <li class="dropdown-header">Charts</li>
-                                <li> <a href="flot.html">Flot Charts</a> </li>
-                                <li><a href="morris-chart.html">Morris Chart</a></li>
-                                <li><a href="chart-js.html">Chart-js</a></li>
-                                <li><a href="peity-chart.html">Peity Charts</a></li>                                     <li><a href="knob-chart.html">Knob Charts</a></li>
-                                <li><a href="sparkline-chart.html">Sparkline charts</a></li>
-                                <li><a href="extra-charts.html">Extra Charts</a></li>
-                            </ul>
-                        </li>
-                        <li class="col-sm-12 m-t-40 demo-box">
-                            <div class="row">
-                                <div class="col-sm-2">
-                                    <div class="white-box text-center bg-purple"><a href="../eliteadmin-inverse/index.html" target="_blank" class="text-white"><i class="linea-icon linea-basic fa-fw" data-icon="v"></i><br/>
-                                            Demo 1</a></div>
-                                </div>
-                                <div class="col-sm-2">
-                                    <div class="white-box text-center bg-success"><a href="../eliteadmin/index.html" target="_blank" class="text-white"><i class="linea-icon linea-basic fa-fw" data-icon="v"></i><br/>
-                                            Demo 2</a></div>
-                                </div>
-                                <div class="col-sm-2">
-                                    <div class="white-box text-center bg-info"><a href="../eliteadmin-ecommerce/index.html" target="_blank" class="text-white"><i class="linea-icon linea-basic fa-fw" data-icon="v"></i><br/>
-                                            Demo 3</a></div>
-                                </div>
-                                <div class="col-sm-2">
-                                    <div class="white-box text-center bg-inverse"><a href="../eliteadmin-horizontal-navbar/index3.html" target="_blank" class="text-white"><i class="linea-icon linea-basic fa-fw" data-icon="v"></i><br/>
-                                            Demo 4</a></div>
-                                </div>
-                                <div class="col-sm-2">
-                                    <div class="white-box text-center bg-warning"><a href="../eliteadmin-iconbar/index4.html" target="_blank" class="text-white"><i class="linea-icon linea-basic fa-fw" data-icon="v"></i><br/>
-                                            Demo 5</a></div>
-                                </div>
-                                <div class="col-sm-2">
-                                    <div class="white-box text-center bg-danger"><a href="https://themeforest.net/item/elite-admin-responsive-web-app-kit-/16750820" target="_blank" class="text-white"><i class="linea-icon linea-ecommerce fa-fw" data-icon="d"></i><br/>
-                                            Buy Now</a></div>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
-                </li>
-                <!-- /.Megamenu -->
                 <li class="right-side-toggle"> <a class="waves-effect waves-light" href="javascript:void(0)"><i class="ti-settings"></i></a></li>
                 <!-- /.dropdown -->
             </ul>
@@ -244,7 +161,7 @@
                 </span> </div>
                     <!-- /input-group -->
                 </li>
-                <li class="user-pro"> <a href="#" class="waves-effect"><img src="{{ URL::asset('plugins/images/users/varun.jpg') }}" alt="user-img"  class="img-circle"> <span class="hide-menu"> Steve Gection<span class="fa arrow"></span></span></a>
+                <li class="user-pro"> <a href="#" class="waves-effect"><img src="{{ URL::asset('plugins/images/users/varun.jpg') }}" alt="user-img"  class="img-circle"> <span class="hide-menu"> זוהר & גל<span class="fa arrow"></span></span></a>
                     <ul class="nav nav-second-level">
                         <li><a href="javascript:void(0)"><i class="ti-user"></i> My Profile</a></li>
                         <li><a href="javascript:void(0)"><i class="ti-wallet"></i> My Balance</a></li>
@@ -448,13 +365,11 @@
         <div class="container-fluid">
             <div class="row bg-title">
                 <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                    <h4 class="page-title">Starter Page</h4>
+                    <h4 class="page-title">@yield('inner-page-title')</h4>
                 </div>
                 <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
-                    <a href="https://themeforest.net/item/elite-admin-responsive-dashboard-web-app-kit-/16750820" target="_blank" class="btn btn-danger pull-right m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light">Buy Now</a>
                     <ol class="breadcrumb">
-                        <li><a href="#">Dashboard</a></li>
-                        <li class="active">Starter Page</li>
+                        @yield('breadcrumbs-nav')
                     </ol>
                 </div>
                 <!-- /.col-lg-12 -->
@@ -523,7 +438,7 @@
             <!-- /.right-sidebar -->
         </div>
         <!-- /.container-fluid -->
-        <footer class="footer text-center"> 2016 &copy; Elite Admin brought to you by themedesigner.in </footer>
+        <footer class="footer text-center"> 2016 &copy; כל הזכויות שמורות לוודינגו</footer>
     </div>
     <!-- /#page-wrapper -->
 </div>

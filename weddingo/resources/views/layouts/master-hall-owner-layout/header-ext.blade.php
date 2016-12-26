@@ -523,7 +523,7 @@
             <!-- /.right-sidebar -->
         </div>
         <!-- /.container-fluid -->
-        <footer class="footer text-center"> 2016 &copy; Elite Admin brought to you by themedesigner.in </footer>
+        <footer class="footer text-center"> 2016 &copy; All Rights Reserve To Weddingo </footer>
     </div>
     <!-- /#page-wrapper -->
 </div>
