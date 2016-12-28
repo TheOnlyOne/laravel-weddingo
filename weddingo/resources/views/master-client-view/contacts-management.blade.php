@@ -19,14 +19,13 @@
                 <div class="left-aside">
                     <div class="scrollable">
                         <ul class="list-style-none">
-                            <li class="box-label"><a href="javascript:void(0)">כל המוזמנים <span>123</span></a></li>
+                            <li class="box-label"><a href="javascript:void(0)">כל המוזמנים <span id="num_total_guests">123</span></a></li>
                             <li class="divider"></li>
-                            @foreach($categories as $cat)
-                                <li><a href="javascript:void(0)">{{ $cat->name }} <span>103</span></a></li>
-                            @endforeach
-                            <!--<li><a href="javascript:void(0)">Family <span>19</span></a></li>
-                            <li><a href="javascript:void(0)">Friends <span>623</span></a></li>
-                            <li><a href="javascript:void(0)">Private <span>53</span></a></li> -->
+                            <div id="wedding-categories">
+                                @foreach($categories as $cat)
+                                    <li><a href="javascript:void(0)">{{ $cat->name }} <span>103</span></a></li>
+                                @endforeach
+                            </div>
                             <li class="box-label"><a href="javascript:void(0)" data-toggle="modal" data-target="#responsive-modal-add-group" id="add-group-btn">+ הוספת קבוצה חדשה</a></li>
                         </ul>
                     </div>
@@ -49,7 +48,7 @@
                                     <th>עריכה</th>
                                 </tr>
                                 </thead>
-                                <tbody>
+                                <tbody id="wedding-guests">
                                 @foreach($guests as $guest)
                                     <tr class="{{ $guest->id }}">
                                         <td>{{ $guest->name }}</td>
@@ -260,27 +259,25 @@
             });
 
             $("#submit-add-group").click(function(e) {
-                e.preventDefault();
                 console.log("#submit-add-group btn clicked");
                 var _token = $("#group_token").val();
                 var name = $("#group_name").val();
 
                 var data = {
-                    name,
                     _token,
-                }
-
-                console.log(data);
-
-                /*
+                    name
+                };
                 $.post('master-client/add-new-group-category', data, function(callback_data) {
-                    data = '';
-                    $("#error_results").html('<i class="ti-user"></i>' + callback_data + '<a href="" class="closed">×</a>');
-                    $("#error_results").fadeIn("slow");
-                });
-                */
-                $.post('master-client/get-last-group-cateogry-data', data, function(inner_callback_data) {
-                    console.log(inner_callback_data);
+                    // TODO: check if data contains any error, if it does show the misconception popup box.
+                    /* $("#error_results").html('<i class="ti-user"></i>' + callback_data + '<a href="" class="closed">×</a>');
+                    $("#error_results").fadeIn("slow"); */
+                    console.log('1');
+                }).done(function() {
+                    $.post('master-client/get_wedding_categories', data, function(inner_callback_data) {
+                        console.log('2');
+                        console.log(inner_callback_data);
+                        $("#wedding-categories").html(inner_callback_data);
+                    });
                 });
             });
 
@@ -296,14 +293,17 @@
                     _token,
                     name,
                     phone_number,
-                    group_cat,
-                }
+                    group_cat
+                };
 
-                console.log(data);
-
-                $.post('master-client/add-new-wedding-guest', data, function(data) {
-                    $("#error_results").html('<i class="ti-user"></i>' + data + '<a href="" class="closed">×</a>');
-                    $("#error_results").fadeIn("slow");
+                $.post('master-client/add-new-wedding-guest', data, function(callback_data) {
+                    console.log('1');
+                }).done(function() {
+                    $.post('master-client/get_wedding_guests', data, function(inner_callback_data) {
+                        console.log('2');
+                        console.log(inner_callback_data);
+                        $("#wedding-guests").html(inner_callback_data);
+                    });
                 });
             });
 

@@ -10,7 +10,7 @@ use App\master_client\CategoryInvitation;
 use App\master_client\WeddingInvitation;
 use League\Flysystem\Exception;
 
-class ContactsManagemant extends Controller
+class ContactsManagement extends Controller
 {
     public function index() {
         $categories = CategoryInvitation::all();
@@ -28,22 +28,6 @@ class ContactsManagemant extends Controller
             // do task when error
             // TODO: handle this while in production mode
             return $e->getMessage();   // insert query
-        }
-    }
-
-    public function get_all_category_invitations() {
-        /*
-        $categories = CategoryInvitation::all();
-        return json_encode($categories);
-        */
-        try {
-            $wedding = new Wedding;
-            $wedding->id = 1;
-            $wedding->name = "Gal And Zohar";
-            $wedding->date = "26/12/2016";
-            return $wedding->getWeddingGuests();
-        } catch(Exception $e) {
-            return $e->getMessage();
         }
     }
 
@@ -77,7 +61,6 @@ class ContactsManagemant extends Controller
     }
 
     public function update_wedding_guest(Request $request) {
-        /*
         try {
             $id = $request->guest_id;
             $wedding_guest = WeddingInvitation::find($id);
@@ -91,28 +74,51 @@ class ContactsManagemant extends Controller
             return "Wedding Guest has been updated successfuly";
         } catch(Exception $e) {
             return $e->getMessage();
-        } */
-        return 1;
+        }
     }
 
     public function get_updated_guest_data(Request $request) {
         try {
             $id = $request->id;
             $wedding_guest = WeddingInvitation::find($id);
-            // return var_dump($wedding_guest->id);
             return response()->json($wedding_guest);
-            // return Response::json($wedding_guest);
         }
         catch(Exception $e) {
             return $e->getMessage();
         }
     }
 
-    public function get_all_wedding_category() {
-        return CategoryInvitation::all();
+    public function get_wedding_categories() {
+        $categories = CategoryInvitation::all();
+        $html_output = "";
+        foreach($categories as $cat) {
+            $html_output .= '<li><a href="javascript:void(0)">'. $cat->name . '<span>103</span></a></li>';
+        }
+        return $html_output;
     }
 
-    public function get_all_wedding_guests() {
-        return WeddingInvitation::all();
+    public function get_wedding_guests() {
+        $guests = WeddingInvitation::all();
+        $html_output = "";
+        foreach($guests as $guest) {
+            $html_output .= '<tr class="{{ $guest->id }}">';
+            $html_output .= '<td>' . $guest->name . '</td>';
+            $html_output .= '<td>' . $guest->phone_number . '</td>';
+            $html_output .= '<td>' . $guest->guests_num . '</td>';
+            if($guest->is_coming == 1) {
+                $html_output .= '<td>אישר\ה הגעה</td>';
+            } else if($guest->is_coming == 2) {
+                $html_output .= '<td>ביטל\ה הגעה</td>';
+            } else if($guest->is_coming == 0) {
+                $html_output .= '<td>לא מעודכן</td>';
+            }
+            $html_output .= '<td><span class="label label-danger"><a href=\'\' style="color: #fff;" id="remove_wedding_guest" class="' . $guest->id . '">X</a></span> </td>';
+            $html_output .= '<td><span class="label label-danger"><a href=\'\' data-toggle="modal" data-target="#responsive-modal" style="color: #fff;" id="edit_wedding_guest" class="' . $guest->id . '">X</a></span> </td></tr>';
+        }
+        return $html_output;
+    }
+
+    public function test_ajax() {
+        return 1;
     }
 }
