@@ -13,7 +13,7 @@ class CreateWeddingPhotoTitlesTable extends Migration
      */
     public function up()
     {
-        Schema::create('wedding_photo_title', function (Blueprint $table) {
+        Schema::create('wedding_photo_titles', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('wedding_id')->nullable();
             $table->string('title');
@@ -29,6 +29,6 @@ class CreateWeddingPhotoTitlesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('wedding_photo_title');
+        Schema::dropIfExists('wedding_photo_titles');
     }
 }

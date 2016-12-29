@@ -13,17 +13,18 @@ class CreateBuyingInvitationsHistoryTable extends Migration
      */
     public function up()
     {
-        Schema::create('buying_invitation_history', function (Blueprint $table) {
+        Schema::create('buying_invitations_history', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id');
-            $table->dateTime('date');
-            $table->integer('package_id');
+            $table->integer('wedding_id');
+            $table->integer('pricing_package_id');
             $table->integer('amount');
             $table->double('total_price');
             $table->boolean('is_deleted')->default(0);
+            $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('package_id')->references('id')->on('packages_invitations');
+            $table->foreign('pricing_package_id')->references('id')->on('pricing_packages');
         });
     }
 
@@ -34,6 +35,6 @@ class CreateBuyingInvitationsHistoryTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('buying_invitation_history');
+        Schema::dropIfExists('buying_invitations_history');
     }
 }
