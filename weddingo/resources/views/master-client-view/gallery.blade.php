@@ -11,6 +11,10 @@
                         <div id="gallery">
                             <div id="gallery-header">
                                 <div id="gallery-header-center">
+                                    <input type="file" name="image" multiple>
+
+                                    <br>________________________________________________<br><br>
+
                                     <div id="gallery-header-center-left">
                                         <div class="gallery-header-center-right-links" id="filter-all">All</div>
                                         <div class="gallery-header-center-right-links" id="filter-studio">Studio</div>
@@ -18,6 +22,7 @@
                                     </div>
                                 </div>
                             </div>
+                            <br>
                             <div id="gallery-content">
                                 <div id="gallery-content-center"> <a href="{{ URL::asset('plugins/images/assets/studio1.jpg') }}" data-toggle="lightbox" data-gallery="multiimages" data-title="Image title will be apear here"><img src="plugins/images/assets/studio1.jpg" alt="gallery" class="all studio"/> </a> <a href="{{ URL::asset('plugins/images/assets/landscape1.jpg') }}" data-toggle="lightbox" data-gallery="multiimages" data-title="Image title will be apear here"><img src="{{ URL::asset('plugins/images/assets/landscape1.jpg') }}" class="all landscape" alt="gallery" /> </a> <a href="{{ URL::asset('plugins/images/assets/studio2.jpg') }}" data-toggle="lightbox" data-gallery="multiimages" data-title="Image title will be apear here"><img src="{{ URL::asset('plugins/images/assets/studio2.jpg') }}" class="all studio" alt="gallery"/> </a> <a href="{{ URL::asset('plugins/images/assets/studio25.jpg') }}" data-toggle="lightbox" data-gallery="multiimages" data-title="Image title will be apear here"><img src="{{ URL::asset('plugins/images/assets/studio25.jpg') }}" class="all studio" alt="gallery"/> </a> <a href="{{ URL::asset('plugins/images/assets/landscape2.jpg') }}" data-toggle="lightbox" data-gallery="multiimages" data-title="Image title will be apear here"><img src="{{ URL::asset('plugins/images/assets/landscape2.jpg') }}" class="all landscape" alt="gallery"/></a> <a href="{{ URL::asset('plugins/images/assets/studio27.jpg') }}" data-toggle="lightbox" data-gallery="multiimages" data-title="Image title will be apear here"><img src="{{ URL::asset('plugins/images/assets/studio27.jpg') }}" class="all studio" alt="gallery"/> </a> <a href="{{ URL::asset('plugins/images/assets/studio3.jpg') }}" data-toggle="lightbox" data-gallery="multiimages" data-title="Image title will be apear here"><img src="{{ URL::asset('plugins/images/assets/studio3.jpg') }}" class="all studio" alt="gallery"/> </a> <a href="{{ URL::asset('plugins/images/assets/landscape3.jpg') }}" data-toggle="lightbox" data-gallery="multiimages" data-title="Image title will be apear here"></div>
                             </div>
