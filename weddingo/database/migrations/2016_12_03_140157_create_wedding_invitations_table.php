@@ -18,8 +18,9 @@ class CreateWeddingInvitationsTable extends Migration
             $table->string('name');
             $table->string('phone_number')->nullable();
             $table->integer('wedding_id');
+            $table->tinyInteger('guests_num')->nullable();
             $table->tinyInteger('is_coming')->default(0);
-
+            $table->tinyInteger('category_id');
             $table->foreign('wedding_id')->references('id')->on('weddings');
         });
     }

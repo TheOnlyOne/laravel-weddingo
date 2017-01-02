@@ -54,5 +54,6 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'create_wedding_auth' => \App\Http\Middleware\CreateWeddingAuth::class,
         'pricing_auth' => \App\Http\Middleware\PricingAuth::class,
+        'client_auth' => \App\Http\Middleware\clientAuth::class,
     ];
 }

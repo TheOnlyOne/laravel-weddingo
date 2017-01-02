@@ -11,8 +11,12 @@
                         <div id="gallery">
                             <div id="gallery-header">
                                 <div id="gallery-header-center">
-                                    <input type="file" name="image" multiple>
-
+                                    <form class="form-horizontal form-material" action="gallery/store" method="POST" enctype="multipart/form-data">
+                                        <input type="file" id="image" name="image[]" multiple>
+                                        <br>
+                                        <input type="hidden" id="gallery_token" name="_token" value="{{csrf_token()}}">
+                                        <button type="submit" name="confirm_button" id="confirm_button">אעלה תמונות</button>
+                                    </form>
                                     <br>________________________________________________<br><br>
 
                                     <div id="gallery-header-center-left">

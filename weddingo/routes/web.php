@@ -11,12 +11,15 @@
 |
 */
 
-Route::get('gallery', function (){
-    return view('master-client-view.gallery');
+Route::get('/test', function (){
+   echo \Illuminate\Support\Facades\Auth::user()->weddingManagers()->get()[0]->wedding()->get()[0]->buyingInvitationsHistory()->get();
 });
 
 Route::get('/', 'master_client\ContactsManagement@index');
 //Route::get('/', 'master_client\ContactsManagemant@test_add_wedding_guest');
+
+Route::get('/gallery', 'master_client\GalleryController@index');
+Route::post('/gallery/store', 'master_client\GalleryController@store');
 
 Route::get('/login', 'master_home\LoginController@index');
 Route::post('/login/login', 'master_home\LoginController@login');
